@@ -11,7 +11,7 @@
 
     <servlet>
         <servlet-name>controller</servlet-name>
-        <servlet-class>controller.Controller</servlet-class>
+        <servlet-class>com.legoStore.controller.Controller</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -19,5 +19,19 @@
         <url-pattern>/controller</url-pattern>
     </servlet-mapping>
 
+    <listener>
+        <display-name>ContextListener</display-name>
+        <listener-class>com.legoStore.config.ContextListener</listener-class>
+    </listener>
+
+    <filter>
+        <filter-name>Filter</filter-name>
+        <filter-class>com.legoStore.config.Filter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>Filter</filter-name>
+        <servlet-name>controller</servlet-name>
+    </filter-mapping>
 </web-app>
 
