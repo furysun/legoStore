@@ -9,7 +9,6 @@ import java.io.IOException;
 public class Filter implements javax.servlet.Filter {
     private static final Logger logger = LoggerFactory.getLogger(Filter.class);
 
-
     public void init(FilterConfig filterConfig) throws ServletException {
         logger.debug("Filter init ");
     }
