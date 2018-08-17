@@ -5,19 +5,13 @@
 
     <c:set var="app" value="${pageContext.request.contextPath}"/>
 
-    <title>login</title>
+    <title>Hi</title>
 </head>
 <body>
 
 <form action="${app}/controller" method="post">
-    <input type="hidden" name="command" value="GO_TO_HELLO">
-
-    login:
-    <input type="text" name="login"/>
-    password:
-    <input type="password" name="password"/>
-
-    <input type="submit" value="ok"/>
+    <input type="hidden" name="action" value="LOGIN">
+    Hello user <3
 </form>
 </body>
 </html>
