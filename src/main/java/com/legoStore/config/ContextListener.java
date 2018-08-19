@@ -5,6 +5,7 @@ import com.legoStore.controller.command.CommandContainer;
 import com.legoStore.controller.command.common.GoToHelloUserCommand;
 import com.legoStore.controller.command.common.GoToLoginCommand;
 import com.legoStore.controller.command.common.GoToRegistrationCommand;
+import com.legoStore.controller.command.common.LoginCommand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,9 +14,7 @@ import javax.servlet.ServletContextListener;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.legoStore.controller.command.CommandName.GO_TO_HELLO;
-import static com.legoStore.controller.command.CommandName.GO_TO_LOGIN;
-import static com.legoStore.controller.command.CommandName.GO_TO_REGISTRATION;
+import static com.legoStore.controller.command.CommandName.*;
 
 
 public class ContextListener implements ServletContextListener {
@@ -40,6 +39,7 @@ public class ContextListener implements ServletContextListener {
         commandMap.put(GO_TO_LOGIN.name(), new GoToLoginCommand());
         commandMap.put(GO_TO_REGISTRATION.name(), new GoToRegistrationCommand());
         commandMap.put(GO_TO_HELLO.name(), new GoToHelloUserCommand());
+        commandMap.put(LOGIN.name(), new LoginCommand());
 
         commandContainer.setCommands(commandMap);
     }

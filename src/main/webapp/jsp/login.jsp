@@ -10,7 +10,7 @@
 <body>
 
 <form action="${app}/controller" method="post">
-    <input type="hidden" name="command" value="GO_TO_HELLO">
+    <input type="hidden" name="command" value="LOGIN">
 
     login:
     <input type="text" name="login"/>
@@ -19,5 +19,10 @@
 
     <input type="submit" value="ok"/>
 </form>
+
+<c:if test="${error}">
+    <h2 style="color: red"> invalid login or password </h2>
+</c:if>
+
 </body>
 </html>
