@@ -1,19 +1,20 @@
 package com.legoStore.dao.impl;
 
-import com.legoStore.config.propertyLoader.PropertyLoader;
-import com.legoStore.controller.command.common.LoginCommand;
 import com.legoStore.dao.UserDao;
 import com.legoStore.dao.exception.UserNotFoundException;
+import com.legoStore.domain.Role;
 import com.legoStore.domain.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
-public class JdbcUserDao implements UserDao {
+public class JdbcUserDao extends JdbsDao implements UserDao {
     private volatile static JdbcUserDao instance;
     private static final Logger logger = LoggerFactory.getLogger(JdbcUserDao.class);
-    private PropertyLoader propertyLoader = PropertyLoader.getInstance();
 
     private JdbcUserDao() {
     }
@@ -32,28 +33,16 @@ public class JdbcUserDao implements UserDao {
     public User findUserByLogin(String login) throws UserNotFoundException {
 
         User result = null;
-
-        try {
-            // 1
-            Class.forName(propertyLoader.getDriver());
-        } catch (ClassNotFoundException e) {
-            logger.error("User not found:" + e.getMessage());
-            throw new UserNotFoundException();
-        }
-
-            // 2
-        try (Connection connection = DriverManager.getConnection(propertyLoader.getDbUrl())) {
+        // 2
+        try (Connection connection = creatConnection()) {
             // 3
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM USERS " +
-                    "WHERE LOGIN=" + login);
+            PreparedStatement preparedStatement = connection.prepareStatement(SqlQueries.FIND_USER_BY_LOGIN);
+            preparedStatement.setString(1, login);
             // 4
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                result = new User();
-                result.setId(resultSet.getLong("ID"));
-                result.setLogin(resultSet.getString("LOGIN"));
-                result.setPassword(resultSet.getString("PASSWORD"));
+                result = exstractUser(resultSet);
             }
 
         } catch (SQLException e) {
@@ -62,5 +51,17 @@ public class JdbcUserDao implements UserDao {
         }
 
         return result;
+    }
+
+    private User exstractUser(ResultSet resultSet) throws SQLException {
+
+        User result = new User();
+        result.setId(resultSet.getLong("ID"));
+        result.setLogin(resultSet.getString("LOGIN"));
+        result.setPassword(resultSet.getString("PASSWORD"));
+        result.setRole(Role.valueOf(resultSet.getString("ROLE")));
+
+        return result;
+
     }
 }

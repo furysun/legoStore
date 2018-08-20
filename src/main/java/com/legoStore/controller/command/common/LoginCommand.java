@@ -3,6 +3,7 @@ package com.legoStore.controller.command.common;
 import com.legoStore.controller.Path;
 import com.legoStore.controller.command.Command;
 import com.legoStore.dao.exception.UserNotFoundException;
+import com.legoStore.domain.Role;
 import com.legoStore.domain.User;
 import com.legoStore.service.UserService;
 import org.slf4j.Logger;
@@ -23,12 +24,23 @@ public class LoginCommand implements Command {
 
         String login = req.getParameter("login");
 
+        User user;
+
         try {
-            User user = userService.findUserByLogin(login);
-        } catch( UserNotFoundException e){
+            user = userService.findUserByLogin(login);
+        } catch (UserNotFoundException e) {
             req.getSession().setAttribute("error", true);
             return Path.LOGIN_PAGE;
-            // show error message.
+        }
+
+        String password = req.getParameter("password");
+        if (!password.equals(user.getPassword())) {
+            req.getSession().setAttribute("error", true);
+            return Path.LOGIN_PAGE;
+        }
+
+        if (user.getRole() == Role.USER) {
+            return Path.HELLO_PAGE;
         }
 
 
