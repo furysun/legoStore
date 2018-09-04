@@ -41,9 +41,9 @@ public class LoginCommand implements Command {
 
         if (user.getRole() == Role.USER) {
             return Path.HELLO_PAGE;
+        } else if (user.getRole() == Role.ADMIN) {
+            return Path.HI_PAGE;
         }
-
-
         return null;
     }
 }

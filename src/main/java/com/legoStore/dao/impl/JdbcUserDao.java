@@ -12,7 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class JdbcUserDao extends JdbsDao implements UserDao {
+public class JdbcUserDao extends JdbcDao implements UserDao {
     private volatile static JdbcUserDao instance;
     private static final Logger logger = LoggerFactory.getLogger(JdbcUserDao.class);
 
@@ -34,7 +34,7 @@ public class JdbcUserDao extends JdbsDao implements UserDao {
 
         User result = null;
         // 2
-        try (Connection connection = creatConnection()) {
+        try (Connection connection = createConnection()) {
             // 3
             PreparedStatement preparedStatement = connection.prepareStatement(SqlQueries.FIND_USER_BY_LOGIN);
             preparedStatement.setString(1, login);
@@ -62,6 +62,5 @@ public class JdbcUserDao extends JdbsDao implements UserDao {
         result.setRole(Role.valueOf(resultSet.getString("ROLE")));
 
         return result;
-
     }
 }

@@ -8,11 +8,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public abstract class JdbsDao {
+public abstract class JdbcDao {
     private PropertyLoader propertyLoader = PropertyLoader.getInstance();
-    private static final Logger logger = LoggerFactory.getLogger(JdbsDao.class);
+    private static final Logger logger = LoggerFactory.getLogger(JdbcDao.class);
 
-    public Connection creatConnection() {
+    public Connection createConnection() {
         try {
             // 1
             Class.forName(propertyLoader.getDriver());
