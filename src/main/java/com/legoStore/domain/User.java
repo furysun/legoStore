@@ -2,17 +2,12 @@ package com.legoStore.domain;
 
 public class User {
     private long id;
+    private String name;
     private String login;
     private String password;
     private Role role;
 
     public User() {
-    }
-
-    public User(long id, String login, String password) {
-        this.id = id;
-        this.login = login;
-        this.password = password;
     }
 
     public long getId() {
@@ -21,6 +16,14 @@ public class User {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getLogin() {
@@ -51,6 +54,7 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
+                ", name='" + name + '\'' +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", role=" + role +

@@ -29,4 +29,8 @@ public class UserService {
     public User findUserByLogin(String login) throws UserNotFoundException {
         return userDao.findUserByLogin(login);
     }
+
+    public void createUser(User user){
+        userDao.createUser(user);
+    }
 }

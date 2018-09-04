@@ -5,5 +5,5 @@ import com.legoStore.domain.User;
 
 public interface UserDao {
     User findUserByLogin(String login) throws UserNotFoundException;
-
+    void createUser(User user);
 }

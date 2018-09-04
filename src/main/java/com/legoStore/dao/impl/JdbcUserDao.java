@@ -42,7 +42,7 @@ public class JdbcUserDao extends JdbcDao implements UserDao {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                result = exstractUser(resultSet);
+                result = extractUser(resultSet);
             }
 
         } catch (SQLException e) {
@@ -53,7 +53,23 @@ public class JdbcUserDao extends JdbcDao implements UserDao {
         return result;
     }
 
-    private User exstractUser(ResultSet resultSet) throws SQLException {
+    @Override
+    public void createUser(User user) {
+        try (Connection connection = createConnection()) {
+            PreparedStatement preparedStatement = connection.prepareStatement(SqlQueries.CREATE_USER);
+
+            preparedStatement.setString(1, user.getName());
+            preparedStatement.setString(2, user.getLogin());
+            preparedStatement.setString(3, user.getPassword());
+
+            preparedStatement.execute();
+
+        } catch (SQLException e) {
+            logger.error("Can not create user:" + e.getMessage());
+        }
+    }
+
+    private User extractUser(ResultSet resultSet) throws SQLException {
 
         User result = new User();
         result.setId(resultSet.getLong("ID"));
