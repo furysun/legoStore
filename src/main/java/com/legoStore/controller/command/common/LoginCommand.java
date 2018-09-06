@@ -34,15 +34,16 @@ public class LoginCommand implements Command {
         try {
             user = userService.findUserByLogin(login);
         } catch (UserNotFoundException e) {
-            req.getSession().setAttribute("error", true);
+            req.getSession().setAttribute("loginError", true);
             return Path.LOGIN_PAGE;
         }
 
         String password = req.getParameter("password");
         if (!password.equals(user.getPassword())) {
-            req.getSession().setAttribute("error", true);
+            req.getSession().setAttribute("loginError", true);
             return Path.LOGIN_PAGE;
         }
+        req.getSession().setAttribute("loginError", false);
 
         if (user.getRole() == Role.USER) {
             return Path.FORWARD;

@@ -34,6 +34,5 @@
     <h1>lego store</h1>
 </div>
 
-
 </body>
 </html>

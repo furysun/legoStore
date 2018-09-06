@@ -4,7 +4,9 @@
     font-size: 12px;
     padding: 15px;
 }
-h1{
+
+
+h1 {
     text-align: center;
 }
 
@@ -28,22 +30,57 @@ th {
     color: white;
 }
 
-.color{
+.color {
     color: palevioletred;
 }
-.price_color{
+
+.price_color {
     color: plum;
 }
 
-.footer{
+.footer {
     background: linear-gradient(45deg, #EECFBA, paleturquoise);
     color: white;
     text-align: center;
     font-size: 12px;
     padding: 15px;
-
+    margin: 10px;
     position: absolute;
     right: 0;
     bottom: 0;
     left: 0;
+}
+
+
+input[type=button], input[type=submit], input[type=reset] {
+    background: linear-gradient(45deg, #EECFBA, pink);
+    color: white;
+    border: none;
+    width: 40%;
+    padding: 16px 50px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+input[type=text]{
+    width: 40%;
+    padding: 16px 50px;
+    text-decoration: none;
+    margin: 4px 2px;
+}
+
+input[type=password]{
+    width: 40%;
+    padding: 16px 50px;
+    text-decoration: none;
+    margin: 4px 2px;
+}
+
+
+.position-center{
+    text-align: center;
+}
+
+.error-message{
+    color: pink;
 }

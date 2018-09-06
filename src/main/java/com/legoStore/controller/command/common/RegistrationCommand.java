@@ -25,7 +25,7 @@ public class RegistrationCommand implements Command {
         String confirmPassword  = req.getParameter("confirmPassword");
 
         if(!password.equals(confirmPassword)){
-            req.getSession().setAttribute("error", true);
+            req.getSession().setAttribute("registrationError", true);
             return Path.REGISTRATION_PAGE;
         }
 
@@ -39,7 +39,7 @@ public class RegistrationCommand implements Command {
         user.setPassword(password);
 
         userService.createUser(user);
-
+        req.getSession().setAttribute("registrationError", false);
         return Path.LOGIN_PAGE;
     }
 }
