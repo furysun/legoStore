@@ -8,10 +8,19 @@
     <title>Hi</title>
 </head>
 <body>
+<div class="header">
+    <h1>Hi</h1>
+</div>
 
 <form action="${app}/controller" method="post">
     <input type="hidden" name="action" value="LOGIN">
     Hello user <3
 </form>
+
+
+<div class="footer">
+    <h1>lego store</h1>
+</div>
+
 </body>
 </html>

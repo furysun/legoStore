@@ -8,6 +8,10 @@
     <title>login</title>
 </head>
 <body>
+<div class="header">
+    <h1>login</h1>
+</div>
+
 
 <form action="${app}/controller" method="post">
     <input type="hidden" name="command" value="LOGIN">
@@ -24,5 +28,12 @@
     <h2 style="color: red"> invalid login or password </h2>
 </c:if>
 
+
+
+<div class="footer">
+    <h1>lego store</h1>
+</div>
+
 </body>
+
 </html>

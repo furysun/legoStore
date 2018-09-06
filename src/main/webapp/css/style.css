@@ -1,0 +1,49 @@
+.header {
+    background: linear-gradient(45deg, #EECFBA, paleturquoise);
+    color: white;
+    font-size: 12px;
+    padding: 15px;
+}
+h1{
+    text-align: center;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table, th, td {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border: 1px solid pink;
+}
+
+th, td {
+    padding: 15px;
+}
+
+th {
+    background: linear-gradient(45deg, #EECFBA, pink);
+    color: white;
+}
+
+.color{
+    color: palevioletred;
+}
+.price_color{
+    color: plum;
+}
+
+.footer{
+    background: linear-gradient(45deg, #EECFBA, paleturquoise);
+    color: white;
+    text-align: center;
+    font-size: 12px;
+    padding: 15px;
+
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}

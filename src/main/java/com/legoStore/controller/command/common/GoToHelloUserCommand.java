@@ -16,6 +16,6 @@ public class GoToHelloUserCommand implements Command {
     public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         logger.debug("execute");
 
-        return Path.HELLO_PAGE;
+        return Path.ITEMS_PAGE;
     }
 }

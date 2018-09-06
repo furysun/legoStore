@@ -3,6 +3,7 @@ package com.legoStore.controller.command.common;
 import com.legoStore.controller.Path;
 import com.legoStore.controller.command.Command;
 import com.legoStore.dao.exception.UserNotFoundException;
+import com.legoStore.domain.Item;
 import com.legoStore.domain.Role;
 import com.legoStore.domain.User;
 import com.legoStore.service.UserService;
@@ -13,6 +14,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.legoStore.controller.command.CommandName.GET_ITEMS;
 
 public class LoginCommand implements Command {
     private static final Logger logger = LoggerFactory.getLogger(LoginCommand.class);
@@ -40,7 +45,7 @@ public class LoginCommand implements Command {
         }
 
         if (user.getRole() == Role.USER) {
-            return Path.HELLO_PAGE;
+            return Path.FORWARD;
         } else if (user.getRole() == Role.ADMIN) {
             return Path.HI_PAGE;
         }

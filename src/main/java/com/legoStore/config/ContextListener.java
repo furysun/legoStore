@@ -38,6 +38,7 @@ public class ContextListener implements ServletContextListener {
         commandMap.put(GO_TO_HELLO.name(), new GoToHelloUserCommand());
         commandMap.put(LOGIN.name(), new LoginCommand());
         commandMap.put(REGISTRATION.name(), new RegistrationCommand());
+        commandMap.put(GET_ITEMS.name(), new GetItemsCommand());
 
         commandContainer.setCommands(commandMap);
     }

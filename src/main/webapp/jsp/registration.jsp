@@ -9,6 +9,10 @@
 </head>
 <body>
 
+<div class="header">
+    <h1>Registration</h1>
+</div>
+
 <form action="${app}/controller" method="post">
     <input type="hidden" name="command" value="REGISTRATION">
     name:
@@ -27,6 +31,11 @@
 <c:if test="${error}">
     <h2 style="color: red"> passwords do not match</h2>
 </c:if>
+
+
+<div class="footer">
+    <h1>lego store</h1>
+</div>
 
 </body>
 </html>

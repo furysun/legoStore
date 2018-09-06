@@ -1,5 +1,6 @@
 package com.legoStore.controller;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -41,6 +42,10 @@ public class Controller extends HttpServlet {
         if (result.endsWith(".jsp")) {
             logger.debug("redirect to " + result);
             resp.sendRedirect(result);
+        } else {
+            logger.debug("forward");
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher(Path.FORWARD);
+            requestDispatcher.forward(req,resp);
         }
     }
 }
