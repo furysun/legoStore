@@ -5,4 +5,6 @@ public class SqlQueries {
             "WHERE LOGIN = ?";
     public static final String CREATE_USER = "INSERT INTO USERS(NAME, LOGIN, PASSWORD, ROLE)" +
             "VALUES (?,?,?,'USER');\n";
+
+    public final static String GET_ALL_ITEMS = "SELECT * FROM ITEMS";
 }
