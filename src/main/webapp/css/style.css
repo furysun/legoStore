@@ -41,14 +41,10 @@ th {
 .footer {
     background: linear-gradient(45deg, #EECFBA, paleturquoise);
     color: white;
-    text-align: center;
     font-size: 12px;
     padding: 15px;
     margin: 10px;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
+
 }
 
 

@@ -2,7 +2,9 @@ package com.legoStore.config;
 
 import com.legoStore.controller.command.Command;
 import com.legoStore.controller.command.CommandContainer;
+import com.legoStore.controller.command.CommandName;
 import com.legoStore.controller.command.common.*;
+import com.legoStore.controller.command.user.AddToCartCommand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -39,6 +41,8 @@ public class ContextListener implements ServletContextListener {
         commandMap.put(LOGIN.name(), new LoginCommand());
         commandMap.put(REGISTRATION.name(), new RegistrationCommand());
         commandMap.put(GET_ITEMS.name(), new GetItemsCommand());
+        commandMap.put(ADD_TO_CART.name(), new AddToCartCommand());
+
 
         commandContainer.setCommands(commandMap);
     }

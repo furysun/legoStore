@@ -44,7 +44,7 @@ public class Controller extends HttpServlet {
             resp.sendRedirect(result);
         } else {
             logger.debug("forward");
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher(Path.FORWARD);
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher(Path.GET_ITEMS_COMMAND);
             requestDispatcher.forward(req,resp);
         }
     }

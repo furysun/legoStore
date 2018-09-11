@@ -4,14 +4,10 @@ public class Item {
     private int id;
     private String name;
     private int price;
+    private Long basketId;
+    private Long orderId;
 
     public Item() {
-    }
-
-    public Item(int id, String name, int price) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
     }
 
     public int getId() {
@@ -38,12 +34,19 @@ public class Item {
         this.price = price;
     }
 
-    @Override
-    public String toString() {
-        return "Item{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                '}';
+    public Long getBasketId() {
+        return basketId;
+    }
+
+    public void setBasketId(Long basketId) {
+        this.basketId = basketId;
+    }
+
+    public Long getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
     }
 }

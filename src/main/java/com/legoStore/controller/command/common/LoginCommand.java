@@ -39,9 +39,14 @@ public class LoginCommand implements Command {
             return Path.LOGIN_PAGE;
         }
         req.getSession().setAttribute("loginError", false);
+        logger.debug("user name "+user.getName());
+
+        req.getSession().setAttribute("currentUser", user);
+
+        req.getSession().setAttribute("username",user.getName());
 
         if (user.getRole() == Role.USER) {
-            return Path.FORWARD;
+            return Path.GET_ITEMS_COMMAND;
         } else if (user.getRole() == Role.ADMIN) {
             return Path.HI_PAGE;
         }

@@ -6,6 +6,7 @@ public class User {
     private String login;
     private String password;
     private Role role;
+    private long basketId;
 
     public User() {
     }
@@ -50,14 +51,11 @@ public class User {
         this.role = role;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", role=" + role +
-                '}';
+    public long getBasketId() {
+        return basketId;
+    }
+
+    public void setBasketId(long basketId) {
+        this.basketId = basketId;
     }
 }

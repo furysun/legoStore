@@ -6,5 +6,5 @@ public class Path {
     public static final String ITEMS_PAGE = "jsp/items.jsp";
     public static final String HI_PAGE = "jsp/dashboard.jsp";
 
-    public static final String FORWARD = "/controller?command=GET_ITEMS";
+    public static final String GET_ITEMS_COMMAND = "/controller?command=GET_ITEMS";
 }

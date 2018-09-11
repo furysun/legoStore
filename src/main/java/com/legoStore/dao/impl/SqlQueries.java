@@ -7,4 +7,10 @@ public class SqlQueries {
             "VALUES (?,?,?,'USER');\n";
 
     public final static String GET_ALL_ITEMS = "SELECT * FROM ITEMS";
+
+    public final static String GET_ITEM_BY_ID = "select * from ITEMS where ID=?";
+
+    public final static String UPDATE_ITEM  = "UPDATE ITEMS" +
+            " SET NAME = ?, PRICE = ?, BASKET_ID = ?" +
+            " WHERE ID = ?";
 }

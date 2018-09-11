@@ -71,12 +71,14 @@ public class JdbcUserDao extends JdbcDao implements UserDao {
 
     private User extractUser(ResultSet resultSet) throws SQLException {
 
-        User result = new User();
-        result.setId(resultSet.getLong("ID"));
-        result.setLogin(resultSet.getString("LOGIN"));
-        result.setPassword(resultSet.getString("PASSWORD"));
-        result.setRole(Role.valueOf(resultSet.getString("ROLE")));
+        User user = new User();
+        user.setName(resultSet.getString("NAME"));
+        user.setId(resultSet.getLong("ID"));
+        user.setLogin(resultSet.getString("LOGIN"));
+        user.setPassword(resultSet.getString("PASSWORD"));
+        user.setRole(Role.valueOf(resultSet.getString("ROLE")));
+        user.setBasketId(resultSet.getLong("BASKET_ID"));
 
-        return result;
+        return user;
     }
 }

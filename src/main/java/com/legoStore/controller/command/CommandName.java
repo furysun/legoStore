@@ -6,5 +6,6 @@ public enum CommandName {
     GO_TO_HELLO,
     LOGIN,
     REGISTRATION,
-    GET_ITEMS
+    GET_ITEMS,
+    ADD_TO_CART
 }

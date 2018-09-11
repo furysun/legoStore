@@ -18,6 +18,7 @@
 
 <form action="${app}/controller" method="post">
     <input type="hidden" name="command" value="LOGIN">
+
     <div class="position-center">
         <input id="login" type="text" name="login" placeholder="login" required/>
     </div>
