@@ -61,6 +61,7 @@ public class JdbcUserDao extends JdbcDao implements UserDao {
             preparedStatement.setString(1, user.getName());
             preparedStatement.setString(2, user.getLogin());
             preparedStatement.setString(3, user.getPassword());
+            preparedStatement.setLong(4, user.getBasketId());
 
             preparedStatement.execute();
 

@@ -7,5 +7,6 @@ public enum CommandName {
     LOGIN,
     REGISTRATION,
     GET_ITEMS,
-    ADD_TO_CART
+    ADD_TO_CART,
+    LOGOUT
 }

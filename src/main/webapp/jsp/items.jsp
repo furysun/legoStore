@@ -15,7 +15,12 @@
     <h1>lego store</h1>
     <h1>Hello, <c:out value="${username}"/></h1>
 
-    <h1>In cart: 0</h1>
+    <form action="${app}/controller" method="get">
+        <input type="hidden" name="command" value="LOGOUT"/>
+        <input type="submit" value="logout"/>
+    </form>
+
+    <h1>In cart: <c:out value="${countInCart}"/></h1>
 </div>
 
 <table>
@@ -30,12 +35,16 @@
             <td class="price_color"><c:out value="${item.price}"/>$</td>
 
             <td>
-                <form action="${app}/controller" method="post">
-                    <input type="hidden" name="command" value="ADD_TO_CART"/>
-                    <input type="hidden" name="itemId" value="<c:out value="${item.id}"/>"/>
-
-                    <input type="submit" value="add to cart"/>
-                </form>
+                <c:if test="${item.basketId!=currentBasketId}">
+                    <form action="${app}/controller" method="post">
+                        <input type="hidden" name="command" value="ADD_TO_CART"/>
+                        <input type="hidden" name="itemId" value="<c:out value="${item.id}"/>"/>
+                        <input type="submit" value="add to cart"/>
+                    </form>
+                </c:if>
+                <c:if test="${item.basketId==currentBasketId}">
+                    in cart
+                </c:if>
             </td>
         </tr>
     </c:forEach>
