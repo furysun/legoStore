@@ -13,5 +13,8 @@ public class SqlQueries {
     public final static String UPDATE_ITEM  = "UPDATE ITEMS" +
             " SET NAME = ?, PRICE = ?, BASKET_ID = ?" +
             " WHERE ID = ?";
-    public final static String CREAT_BASKET = "INSERT INTO BASKETS VALUES ();";
+    public final static String CRETE_BASKET = "INSERT INTO BASKETS VALUES ();";
+
+    public final static String GET_ITEM_BY_BASKETID = "select * from ITEMS where BASKET_ID = ?";
+
 }
