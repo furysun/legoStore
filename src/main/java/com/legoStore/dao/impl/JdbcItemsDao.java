@@ -91,6 +91,32 @@ public class JdbcItemsDao extends JdbcDao implements ItemDao {
 
     }
 
+    @Override
+    public List<Item> getAllByBasketId(long basketId) {
+        try (Connection connection = createConnection()) {
+            List<Item>result = new ArrayList<>();
+            PreparedStatement preparedStatement = connection.prepareStatement(SqlQueries.GET_ITEM_BY_BASKETID);
+
+            preparedStatement.setLong(1,basketId);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                Item item = extractItem(resultSet);
+                result.add(item);
+            }
+
+            logger.debug(result.size()+"");
+
+            return result;
+
+        } catch (SQLException e) {
+            logger.error(e.getMessage());
+            throw new ItemNotFoundException();
+        }
+    }
+
+
     private Item extractItem(ResultSet resultSet) throws SQLException {
 
         Item result = new Item();

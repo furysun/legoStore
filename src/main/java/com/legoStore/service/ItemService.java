@@ -41,4 +41,8 @@ public class ItemService {
 
         itemDao.save(item);
     }
+
+    public List<Item> getAllByBasketId(long basketId) {
+        return itemDao.getAllByBasketId(basketId);
+    }
 }

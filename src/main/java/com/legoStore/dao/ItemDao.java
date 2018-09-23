@@ -11,4 +11,6 @@ public interface ItemDao {
     Item findById(long id);
 
     void save(Item item);
+
+    List<Item> getAllByBasketId(long basketId);
 }

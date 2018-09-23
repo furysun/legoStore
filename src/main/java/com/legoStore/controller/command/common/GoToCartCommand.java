@@ -1,4 +1,4 @@
-package com.legoStore.controller.command.user;
+package com.legoStore.controller.command.common;
 
 import com.legoStore.controller.Path;
 import com.legoStore.controller.command.Command;
@@ -14,30 +14,20 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-public class GetItemsCommand implements Command {
-    private static final Logger logger = LoggerFactory.getLogger(GetItemsCommand.class);
-
+public class GoToCartCommand implements Command {
+    private static final Logger logger = LoggerFactory.getLogger(GoToCartCommand.class);
     private ItemService itemService = ItemService.getInstance();
 
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Item> items = itemService.getAll();
-        req.getSession().setAttribute("items", items);
-
         User user = (User) req.getSession().getAttribute("currentUser");
 
-        req.getSession().setAttribute("currentBasketId", user.getBasketId());
-        logger.debug("GetItemsCommand");
+        long basketId = user.getBasketId();
 
+        List <Item> items = itemService.getAllByBasketId(basketId);
 
-        int count = 0;
+        req.getSession().setAttribute("items", items);
 
-        for (Item item : items) {
-            if (item.getBasketId() != null && item.getBasketId() == user.getBasketId()) {
-                count++;
-            }
-        }
-        req.getSession().setAttribute("countInCart", count);
-        return Path.ITEMS_PAGE;
+        return Path.CART_PAGE;
     }
 }

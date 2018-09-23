@@ -30,23 +30,11 @@ public class JdbcBasketDao extends JdbcDao implements BasketDao {
         long id;
 
         try (Connection connection = createConnection()) {
-            PreparedStatement preparedStatement = connection.prepareStatement(SqlQueries.CREAT_BASKET,
+            PreparedStatement preparedStatement = connection.prepareStatement(SqlQueries.CRETE_BASKET,
                     Statement.RETURN_GENERATED_KEYS);
 
-            int affectedRows = preparedStatement.executeUpdate();
+            id = executeAndGetKey(preparedStatement);
 
-            if (affectedRows == 0) {
-                throw new SQLException("Creating basket failed, no rows affected.");
-            }
-
-            try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
-                if (generatedKeys.next()) {
-                    id = generatedKeys.getLong(1);
-                }
-                else {
-                    throw new SQLException("Creating basket failed, no ID obtained.");
-                }
-            }
         } catch (SQLException e) {
             logger.error(e.getMessage());
             throw new ItemNotFoundException();

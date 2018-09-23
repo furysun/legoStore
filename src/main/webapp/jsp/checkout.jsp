@@ -1,22 +1,23 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
+
 <head>
     <link rel="stylesheet" type="text/css" href="../css/style.css">
 
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-    <c:set var="app" value="${pageContext.request.contextPath}"/>
-
-    <title>Hi</title>
+    <title>registration</title>
 </head>
+
 <body>
 <div class="header">
-    <h1>Hi</h1>
+    <h1>CHECKOUT</h1>
 </div>
 
 <form action="${app}/controller" method="post">
-    <input type="hidden" name="action" value="LOGIN">
-    Hello user <3
+    <input type="hidden" name="command" value="CHECKOUT"/>
+    <input type="text" name="address" placeholder="address" required/>
+    <input type="submit" value="checkout"/>
 </form>
 
 <div class="footer">
@@ -24,4 +25,5 @@
 </div>
 
 </body>
+
 </html>

@@ -17,4 +17,6 @@ public class SqlQueries {
 
     public final static String GET_ITEM_BY_BASKETID = "select * from ITEMS where BASKET_ID = ?";
 
+    public final static String SAVE_ORDER = "INSERT INTO ORDERS(ADRESS, COMPLETED, CLIENT_ID)VALUES (?,?,?)";
+
 }

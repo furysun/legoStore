@@ -1,20 +1,18 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
+
 <head>
     <link rel="stylesheet" type="text/css" href="../css/style.css">
 
-    <title>registration</title>
+    <title>send</title>
 </head>
+
 <body>
 <div class="header">
-    <h1>Dashboard</h1>
+    <h1>send</h1>
 </div>
-
-<form action="${app}/controller" method="post">
-    <input type="hidden" name="action" value="REGISTRATION">
-    <p>Hi, admin <3</p>
-</form>
 
 
 <div class="footer">
@@ -22,4 +20,5 @@
 </div>
 
 </body>
+
 </html>

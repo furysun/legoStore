@@ -8,5 +8,9 @@ public enum CommandName {
     REGISTRATION,
     GET_ITEMS,
     ADD_TO_CART,
-    LOGOUT
+    LOGOUT,
+    GO_TO_CART,
+    GO_TO_CHECKOUT,
+    CHECKOUT,
+    ORDER_CREATED
 }

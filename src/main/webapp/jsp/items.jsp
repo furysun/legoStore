@@ -20,6 +20,11 @@
         <input type="submit" value="logout"/>
     </form>
 
+    <form action="${app}/controller" method="get">
+        <input type="hidden" name="command" value="GO_TO_CART"/>
+        <input type="submit" value="cart"/>
+    </form>
+
     <h1>In cart: <c:out value="${countInCart}"/></h1>
 </div>
 
@@ -33,7 +38,6 @@
         <tr>
             <td class="color"><c:out value="${item.name}"/></td>
             <td class="price_color"><c:out value="${item.price}"/>$</td>
-
             <td>
                 <c:if test="${item.basketId!=currentBasketId}">
                     <form action="${app}/controller" method="post">
@@ -50,7 +54,6 @@
     </c:forEach>
 
 </table>
-
 
 <div class="footer">
     <h1>lego store</h1>
