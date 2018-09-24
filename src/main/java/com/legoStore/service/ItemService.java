@@ -13,6 +13,7 @@ public class ItemService {
     private static final Logger logger = LoggerFactory.getLogger(ItemService.class);
 
     private volatile static ItemService instance;
+
     private ItemDao itemDao = JdbcItemsDao.getInstance();
 
     private ItemService() {
@@ -44,5 +45,9 @@ public class ItemService {
 
     public List<Item> getAllByBasketId(long basketId) {
         return itemDao.getAllByBasketId(basketId);
+    }
+
+    public void addToOrder(long orderId, long basketId) {
+        itemDao.addToOrder(orderId, basketId);
     }
 }

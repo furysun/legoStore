@@ -15,7 +15,7 @@
 </div>
 
 <form action="${app}/controller" method="get">
-    <input type="hidden" name="command" value="ORDER_CREATED"/>
+    <input type="hidden" name="command" value="GET_ITEMS"/>
 
     <input type="submit" value="OK"/>
 </form>

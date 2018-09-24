@@ -7,10 +7,7 @@ import com.legoStore.domain.Item;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +15,6 @@ public class JdbcItemsDao extends JdbcDao implements ItemDao {
     private volatile static JdbcItemsDao instance;
 
     private static final Logger logger = LoggerFactory.getLogger(JdbcItemsDao.class);
-
 
     private JdbcItemsDao() {
     }
@@ -116,6 +112,21 @@ public class JdbcItemsDao extends JdbcDao implements ItemDao {
         }
     }
 
+    @Override
+    public void addToOrder(long orderId, long basketId) {
+
+        try (Connection connection = createConnection()) {
+            PreparedStatement preparedStatement = connection.prepareStatement(SqlQueries.ADD_TO_ORDER);
+
+            preparedStatement.setLong(1, orderId);
+            preparedStatement.setLong(2, basketId);
+
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            logger.error(e.getMessage());
+            throw new RuntimeException();
+        }
+    }
 
     private Item extractItem(ResultSet resultSet) throws SQLException {
 

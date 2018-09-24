@@ -13,4 +13,6 @@ public interface ItemDao {
     void save(Item item);
 
     List<Item> getAllByBasketId(long basketId);
+
+    void addToOrder(long orderId, long basketId);
 }

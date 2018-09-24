@@ -15,6 +15,7 @@ public class GoToCheckoutCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         return Path.CHECKOUT_PAGE;
     }
 }

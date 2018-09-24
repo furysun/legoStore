@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class GoToCartCommand implements Command {
@@ -24,10 +25,24 @@ public class GoToCartCommand implements Command {
 
         long basketId = user.getBasketId();
 
-        List <Item> items = itemService.getAllByBasketId(basketId);
+        List<Item> items = itemService.getAllByBasketId(basketId);
 
         req.getSession().setAttribute("items", items);
 
+        int sum = calculetSum(items);
+
+        req.getSession().setAttribute("sum", sum);
+
+
         return Path.CART_PAGE;
     }
+
+    private int calculetSum(List<Item> items) {
+        int sum = 0;
+        for (Item item : items) {
+            sum += item.getPrice();
+        }
+        return sum;
+    }
+
 }

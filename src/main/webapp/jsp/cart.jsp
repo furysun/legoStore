@@ -27,6 +27,8 @@
     <input type="hidden" name="command" value="GO_TO_CHECKOUT"/>
     <input type="submit" value="checkout"/>
 </form>
+total: <c:out value="${sum}"/>$
+
 
 <div class="footer">
     <h1>lego store</h1>

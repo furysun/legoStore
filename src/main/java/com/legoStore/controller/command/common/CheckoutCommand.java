@@ -3,6 +3,7 @@ package com.legoStore.controller.command.common;
 import com.legoStore.controller.command.Command;
 import com.legoStore.domain.Order;
 import com.legoStore.domain.User;
+import com.legoStore.service.ItemService;
 import com.legoStore.service.OrdersService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +19,7 @@ public class CheckoutCommand implements Command {
     private static final Logger logger = LoggerFactory.getLogger(CheckoutCommand.class);
 
     private OrdersService ordersService = OrdersService.getInstance();
+    private ItemService itemService = ItemService.getInstance();
 
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -29,7 +31,8 @@ public class CheckoutCommand implements Command {
         order.setClientId(currentUser.getId());
 
         long orderId = ordersService.save(order);
-        logger.debug(orderId + " orderId");
+        long basketId = currentUser.getBasketId();
+        itemService.addToOrder(orderId, basketId);
 
         return ORDER_CREATED;
     }
